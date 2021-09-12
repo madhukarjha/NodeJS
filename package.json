@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/madhukarjha/NodeJS/issues"
   },
-  "homepage": "https://github.com/madhukarjha/NodeJS#readme"
+  "homepage": "https://github.com/madhukarjha/NodeJS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
