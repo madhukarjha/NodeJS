@@ -2,6 +2,7 @@ const express = require('express');
 const cluster = require('cluster');
 const totalCpus = require('os').cpus().length;
 const fibonacci = require('./fibonacci');
+const sumOfPrimes = require('./sumofprimes');
 
 if (cluster.isMaster) {
     console.log('totalCups', totalCpus);
@@ -20,12 +21,17 @@ if (cluster.isMaster) {
   });
 } else {
   const app = express();
+  app.get('/ping', (req, res)=>{
+    res.send(`<h1>pong</h1>`)
+  });
   app.get('/:number', (req, res) => {
       console.log(req.params.number);
-    let number = fibonacci.fibonacci(
+    // let number = fibonacci.fibonacci(
+    //   Number.parseInt(req.params.number)
+    // );
+    res.send(`<h1>${sumOfPrimes.sumOfPrimes(
       Number.parseInt(req.params.number)
-    );
-    res.send(`<h1>${number}</h1>`);
+    )}</h1>`);
   });
 
   app.listen(3000, () => console.log('Express server is running on port 3000'));

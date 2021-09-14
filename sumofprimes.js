@@ -12,5 +12,5 @@ function sumOfPrimes(n) {
     }
     return sum
 }  
-const result = sumOfPrimes(700000);
-console.log(result);
+//const result = sumOfPrimes(700000);
+exports.sumOfPrimes = sumOfPrimes;
