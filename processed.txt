@@ -1,0 +1,358 @@
+Statistical profiling result from isolate-0x102d9d000-10299-v8.log, (17572 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     10    0.1%          /usr/lib/system/libsystem_kernel.dylib
+      9    0.1%          /usr/lib/system/libsystem_malloc.dylib
+      6    0.0%          /usr/lib/system/libsystem_pthread.dylib
+      4    0.0%          /usr/lib/system/libsystem_c.dylib
+      3    0.0%          /usr/lib/system/libsystem_platform.dylib
+      3    0.0%          /usr/lib/libc++.1.dylib
+      1    0.0%          /usr/lib/libc++abi.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+  16935   96.4%   96.6%  LazyCompile: *sumOfPrimes /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/sumofprimes.js:1:21
+      1    0.0%    0.0%  LazyCompile: *nextTick internal/process/task_queues.js:105:18
+      1    0.0%    0.0%  LazyCompile: *hidden internal/errors.js:282:25
+
+ [C++]:
+   ticks  total  nonlib   name
+    319    1.8%    1.8%  t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+     46    0.3%    0.3%  T __ZN4node13native_module15NativeModuleEnv15CompileFunctionERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+     38    0.2%    0.2%  T __kernelrpc_mach_port_set_attributes
+     34    0.2%    0.2%  t __ZN4node2fsL22InternalModuleReadJSONERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+     32    0.2%    0.2%  T _mach_make_memory_entry_64
+     19    0.1%    0.1%  t __ZN4node2fsL4ReadERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+     17    0.1%    0.1%  T _host_get_clock_service
+     14    0.1%    0.1%  t __ZN4node2fsL18InternalModuleStatERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+     12    0.1%    0.1%  t __ZN4node2fsL4OpenERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      8    0.0%    0.0%  T __ZN4node10contextify17ContextifyContext15CompileFunctionERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      6    0.0%    0.0%  T __ZN4node7binding18GetInternalBindingERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      6    0.0%    0.0%  T __ZN4node10StreamBase8JSMethodIXadL_ZNS0_6WritevERKN2v820FunctionCallbackInfoINS2_5ValueEEEEEEEvS7_
+      4    0.0%    0.0%  T __ZN4node7TTYWrap3NewERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      3    0.0%    0.0%  T _vm_copy
+      3    0.0%    0.0%  T _mig_strncpy_zerofill
+      3    0.0%    0.0%  T _mach_port_allocate
+      3    0.0%    0.0%  T __ZN4node6crypto4Hash3NewERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      2    0.0%    0.0%  T __ZN4node2fs5CloseERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      2    0.0%    0.0%  T __ZN4node10StreamBase8JSMethodIXadL_ZNS0_11WriteStringILNS_8encodingE1EEEiRKN2v820FunctionCallbackInfoINS4_5ValueEEEEEEEvS9_
+      1    0.0%    0.0%  t __pthread_mutex_global_init
+      1    0.0%    0.0%  t __ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m
+      1    0.0%    0.0%  t __ZN4nodeL9EnvGetterEN2v85LocalINS0_4NameEEERKNS0_20PropertyCallbackInfoINS0_5ValueEEE
+      1    0.0%    0.0%  t __ZN4node9inspector12_GLOBAL__N_120JSBindingsConnectionINS1_15LocalConnectionEE3NewERKN2v820FunctionCallbackInfoINS5_5ValueEEE
+      1    0.0%    0.0%  t __ZN4node6Buffer12_GLOBAL__N_114ByteLengthUtf8ERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.0%    0.0%  t __ZN4node6Buffer12_GLOBAL__N_111StringWriteILNS_8encodingE1EEEvRKN2v820FunctionCallbackInfoINS4_5ValueEEE
+      1    0.0%    0.0%  t __ZN4node3url12_GLOBAL__N_15ParseERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.0%    0.0%  t __ZN4node12_GLOBAL__N_16Parser5ProxyIMS1_FivEXadL_ZNS1_19on_message_completeEvEEE3RawEP18llhttp__internal_s
+      1    0.0%    0.0%  t __ZN4node12_GLOBAL__N_16Parser10InitializeERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.0%    0.0%  t __ZN2v88internalL35Builtin_Impl_ArrayBufferConstructorENS0_16BuiltinArgumentsEPNS0_7IsolateE
+      1    0.0%    0.0%  t __ZN2v88internal17PrototypeIterator7AdvanceEv
+      1    0.0%    0.0%  t __ZN2v88internal12_GLOBAL__N_119HandleApiCallHelperILb0EEENS0_11MaybeHandleINS0_6ObjectEEEPNS0_7IsolateENS0_6HandleINS0_10HeapObjectEEESA_NS8_INS0_20FunctionTemplateInfoEEENS8_IS4_EENS0_16BuiltinArgumentsE
+      1    0.0%    0.0%  t __ZN2v88internal11StringShape33DispatchToSpecificTypeWithoutCastIZNS1_22DispatchToSpecificTypeIZNS0_6String3GetEiE19StringGetDispatchertJRiEEET0_S4_DpOT1_E17CastingDispatchertJRS4_S6_EEES7_SA_
+      1    0.0%    0.0%  T _posix_spawnattr_destroy
+      1    0.0%    0.0%  T __ZNK2v85Value10IsFunctionEv
+      1    0.0%    0.0%  T __ZN4node9AsyncWrap12MakeCallbackEN2v85LocalINS1_8FunctionEEEiPNS2_INS1_5ValueEEE
+      1    0.0%    0.0%  T __ZN4node7TCPWrap5Bind6ERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      1    0.0%    0.0%  T __ZN4node6loader10ModuleWrap18SetSyntheticExportERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.0%    0.0%  T __ZN4node6crypto4Hash10HashDigestERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.0%    0.0%  T __ZN4node28DTRACE_NET_SERVER_CONNECTIONERKN2v820FunctionCallbackInfoINS0_5ValueEEE
+      1    0.0%    0.0%  T __ZN4node21InternalCallbackScope5CloseEv
+      1    0.0%    0.0%  T __ZN4node12NodePlatform27MonotonicallyIncreasingTimeEv
+      1    0.0%    0.0%  T __ZN2v88internal9Accessors20FunctionLengthGetterENS_5LocalINS_4NameEEERKNS_20PropertyCallbackInfoINS_5ValueEEE
+      1    0.0%    0.0%  T __ZN2v88internal5Scope15DeclareVariableEPNS0_11DeclarationEPKNS0_12AstRawStringEiNS0_12VariableModeENS0_12VariableKindENS0_18InitializationFlagEPbSA_SA_
+      1    0.0%    0.0%  T __ZN2v88internal25FunctionCallbackArgumentsC1EPNS0_7IsolateENS0_6ObjectENS0_10HeapObjectES4_S5_Pmi
+      1    0.0%    0.0%  T __ZN2v88internal15AstValueFactory24GetOneByteStringInternalENS0_6VectorIKhEE
+      1    0.0%    0.0%  T __ZN2v816FunctionTemplate14SetCallHandlerEPFvRKNS_20FunctionCallbackInfoINS_5ValueEEEENS_5LocalIS2_EENS_14SideEffectTypeE
+
+ [Summary]:
+   ticks  total  nonlib   name
+  16937   96.4%   96.6%  JavaScript
+    598    3.4%    3.4%  C++
+     58    0.3%    0.3%  GC
+     36    0.2%          Shared libraries
+      1    0.0%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+    314   64.2%    1.8%  t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+    168   34.4%    1.0%  T __ZN2v88internal21Builtin_HandleApiCallEiPmPNS0_7IsolateE
+      5    1.0%    0.0%  t __ZN4node9inspector12_GLOBAL__N_120InspectorConsoleCallERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.2%    0.0%  T __ZN2v88internal9Accessors20FunctionLengthGetterENS_5LocalINS_4NameEEERKNS_20PropertyCallbackInfoINS_5ValueEEE
+      1    0.2%    0.0%  T __ZN2v88internal16Builtin_ArrayPopEiPmPNS0_7IsolateE
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+  16935   96.4%  LazyCompile: *sumOfPrimes /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/sumofprimes.js:1:21
+  16935  100.0%    LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+  16935  100.0%      LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+  16935  100.0%        LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:114:16
+  16935  100.0%          LazyCompile: ~dispatch /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:98:45
+  16935  100.0%            LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+
+    319    1.8%  t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+     87   27.3%    t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+      7    8.0%      LazyCompile: ~writeHead _http_server.js:243:19
+      7  100.0%        LazyCompile: ~_implicitHeader _http_server.js:238:68
+      7  100.0%          LazyCompile: ~write_ _http_outgoing.js:627:16
+      7  100.0%            LazyCompile: ~end _http_outgoing.js:726:45
+      4    4.6%      t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+      1   25.0%        LazyCompile: ~pathtoRegexp /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/path-to-regexp/index.js:28:22
+      1  100.0%          LazyCompile: ~Layer /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:33:15
+      1  100.0%            LazyCompile: ~route /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:491:29
+      1   25.0%        LazyCompile: ~normalizeString path.js:52:25
+      1  100.0%          LazyCompile: ~resolve path.js:973:10
+      1  100.0%            LazyCompile: ~readPackage internal/modules/cjs/loader.js:245:21
+      1   25.0%        LazyCompile: ~format /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/content-type/index.js:65:17
+      1  100.0%          LazyCompile: ~setCharset /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/utils.js:250:41
+      1  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      1   25.0%        LazyCompile: ~<anonymous> internal/util/inspect.js:134:44
+      1  100.0%          t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+      1  100.0%            Eval: ~<anonymous> internal/util/inspect.js:1:1
+      4    4.6%      LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      4  100.0%        LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      4  100.0%          LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      4  100.0%            LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:114:16
+      4    4.6%      LazyCompile: ~end _http_outgoing.js:726:45
+      4  100.0%        LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      4  100.0%          LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      4  100.0%            LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      3    3.4%      LazyCompile: ~resolve path.js:973:10
+      3  100.0%        LazyCompile: ~readPackage internal/modules/cjs/loader.js:245:21
+      3  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:279:26
+      3  100.0%            LazyCompile: ~trySelf internal/modules/cjs/loader.js:396:17
+      3    3.4%      LazyCompile: ~resOnFinish _http_server.js:676:21
+      3  100.0%        Eval: ~<anonymous> zlib.js:1:1
+      3  100.0%          LazyCompile: ~onFinish _http_outgoing.js:721:18
+      3  100.0%            LazyCompile: ~onCorkedFinish _stream_writable.js:667:24
+      3    3.4%      LazyCompile: ~res.get /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:788:19
+      3  100.0%        LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      3  100.0%          LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      3  100.0%            LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      3    3.4%      LazyCompile: ~parse /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/content-type/index.js:106:16
+      3  100.0%        LazyCompile: ~setCharset /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/utils.js:250:41
+      3  100.0%          LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      3  100.0%            LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      3    3.4%      LazyCompile: ~nextTick internal/process/task_queues.js:105:18
+      1   33.3%        LazyCompile: ~resume _stream_readable.js:972:16
+      1  100.0%          LazyCompile: ~Readable.resume _stream_readable.js:958:37
+      1  100.0%            LazyCompile: ~_dump _http_incoming.js:283:49
+      1   33.3%        LazyCompile: ~endReadable _stream_readable.js:1204:21
+      1  100.0%          LazyCompile: ~Readable.read _stream_readable.js:377:35
+      1  100.0%            LazyCompile: ~resume_ _stream_readable.js:979:17
+      1   33.3%        LazyCompile: ~emitReadable _stream_readable.js:541:22
+      1  100.0%          LazyCompile: ~onEofChunk _stream_readable.js:511:20
+      1  100.0%            LazyCompile: ~readableAddChunk _stream_readable.js:220:26
+      3    3.4%      LazyCompile: ~_storeHeader _http_outgoing.js:337:22
+      3  100.0%        LazyCompile: ~writeHead _http_server.js:243:19
+      3  100.0%          LazyCompile: ~_implicitHeader _http_server.js:238:68
+      3  100.0%            LazyCompile: ~write_ _http_outgoing.js:627:16
+      2    2.3%      LazyCompile: ~sumOfPrimes /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/sumofprimes.js:1:21
+      2  100.0%        LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      2  100.0%          LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      2  100.0%            LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:114:16
+      2    2.3%      LazyCompile: ~realpathSync fs.js:1534:22
+      2  100.0%        LazyCompile: ~toRealPath internal/modules/cjs/loader.js:362:20
+      1   50.0%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:353:17
+      1  100.0%            LazyCompile: ~tryPackage internal/modules/cjs/loader.js:307:20
+      1   50.0%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:607:28
+      1  100.0%            LazyCompile: ~resolveMainPath internal/modules/run_main.js:8:25
+      2    2.3%      LazyCompile: ~getOptions internal/fs/utils.js:206:20
+      2  100.0%        LazyCompile: ~readFileSync fs.js:357:22
+      2  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1147:37
+      2  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:974:33
+      2    2.3%      LazyCompile: ~expressInit /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/middleware/init.js:29:30
+      2  100.0%        LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      2  100.0%          LazyCompile: ~trim_prefix /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:288:23
+      2  100.0%            LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:275:64
+      2    2.3%      LazyCompile: ~endReadableNT _stream_readable.js:1214:23
+      1   50.0%        LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:69:35
+      1   50.0%        LazyCompile: *processTicksAndRejections internal/process/task_queues.js:69:35
+      2    2.3%      LazyCompile: ~emitReadable _stream_readable.js:541:22
+      2  100.0%        LazyCompile: ~onEofChunk _stream_readable.js:511:20
+      2  100.0%          LazyCompile: ~readableAddChunk _stream_readable.js:220:26
+      2  100.0%            LazyCompile: ~Readable.push _stream_readable.js:211:35
+      2    2.3%      LazyCompile: ~_send _http_outgoing.js:282:49
+      2  100.0%        LazyCompile: ~write_ _http_outgoing.js:627:16
+      2  100.0%          LazyCompile: ~end _http_outgoing.js:726:45
+      2  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      2    2.3%      LazyCompile: ~_finish _http_outgoing.js:793:53
+      2  100.0%        LazyCompile: ~_finish _http_server.js:178:52
+      2  100.0%          LazyCompile: ~end _http_outgoing.js:726:45
+      2  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      2    2.3%      LazyCompile: ~_dump _http_incoming.js:283:49
+      2  100.0%        LazyCompile: ~resOnFinish _http_server.js:676:21
+      2  100.0%          Eval: ~<anonymous> zlib.js:1:1
+      2  100.0%            LazyCompile: ~onFinish _http_outgoing.js:721:18
+      1    1.1%      LazyCompile: ~write_ _http_outgoing.js:627:16
+      1  100.0%        LazyCompile: ~end _http_outgoing.js:726:45
+      1  100.0%          LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      1  100.0%            LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      1    1.1%      LazyCompile: ~toRealPath internal/modules/cjs/loader.js:362:20
+      1  100.0%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:607:28
+      1  100.0%          LazyCompile: ~resolveMainPath internal/modules/run_main.js:8:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint internal/modules/run_main.js:64:31
+      1    1.1%      LazyCompile: ~socketOnEnd _http_server.js:538:21
+      1  100.0%        Eval: ~<anonymous> zlib.js:1:1
+      1  100.0%          LazyCompile: ~endReadableNT _stream_readable.js:1214:23
+      1  100.0%            LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:69:35
+      1    1.1%      LazyCompile: ~setupProcessObject internal/bootstrap/node.js:270:28
+      1  100.0%        Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    1.1%      LazyCompile: ~setHeader _http_outgoing.js:516:57
+      1  100.0%        LazyCompile: ~header /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:754:29
+      1  100.0%          LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      1  100.0%            LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      1    1.1%      LazyCompile: ~setCharset /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/utils.js:250:41
+      1  100.0%        LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      1  100.0%          LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      1  100.0%            LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      1    1.1%      LazyCompile: ~readableAddChunk _stream_readable.js:220:26
+      1  100.0%        LazyCompile: ~Readable.push _stream_readable.js:211:35
+      1  100.0%          LazyCompile: ~parserOnMessageComplete _http_common.js:138:33
+      1    1.1%      LazyCompile: ~readPackage internal/modules/cjs/loader.js:245:21
+      1  100.0%        LazyCompile: ~readPackageExports internal/modules/cjs/loader.js:302:28
+      1  100.0%          LazyCompile: ~applyExports internal/modules/cjs/loader.js:441:22
+      1  100.0%            LazyCompile: ~resolveExports internal/modules/cjs/loader.js:498:24
+      1    1.1%      LazyCompile: ~readFileSync fs.js:357:22
+      1  100.0%        LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1147:37
+      1  100.0%          LazyCompile: ~Module.load internal/modules/cjs/loader.js:974:33
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:823:24
+      1    1.1%      LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:14:36
+      1  100.0%        Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1    1.1%      LazyCompile: ~parserOnMessageComplete _http_common.js:138:33
+      1    1.1%      LazyCompile: ~onconnection net.js:1527:22
+      1    1.1%      LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:176:16
+      1  100.0%        LazyCompile: ~expressInit /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/middleware/init.js:29:30
+      1  100.0%          LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%            LazyCompile: ~trim_prefix /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:288:23
+      1    1.1%      LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/index.js:136:31
+      1  100.0%        LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/application.js:158:29
+      1  100.0%          LazyCompile: ~app /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/express.js:38:21
+      1  100.0%            Eval: ~<anonymous> zlib.js:1:1
+      1    1.1%      LazyCompile: ~getColorDepth internal/tty.js:102:23
+      1  100.0%        LazyCompile: ~Console.<computed> internal/console/constructor.js:278:49
+      1  100.0%          LazyCompile: ~Console.<computed> internal/console/constructor.js:297:47
+      1  100.0%            LazyCompile: ~log internal/console/constructor.js:308:6
+      1    1.1%      LazyCompile: ~forEachCode /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/http-errors/index.js:243:38
+      1  100.0%        t __ZN2v88internalL52Builtin_Impl_Stats_V8BreakIteratorSupportedLocalesOfEiPmPNS0_7IsolateE
+      1  100.0%          LazyCompile: ~populateConstructorExports /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/http-errors/index.js:242:37
+      1  100.0%            Eval: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/http-errors/index.js:1:1
+      1    1.1%      LazyCompile: ~flow _stream_readable.js:1003:14
+      1  100.0%        LazyCompile: ~resume_ _stream_readable.js:979:17
+      1  100.0%          LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:69:35
+      1    1.1%      LazyCompile: ~errnoException internal/errors.js:496:24
+      1  100.0%        LazyCompile: ~onStreamRead internal/stream_base_commons.js:163:22
+      1    1.1%      LazyCompile: ~entitytag /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/etag/index.js:39:20
+      1  100.0%        LazyCompile: ~etag /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/etag/index.js:70:15
+      1  100.0%          LazyCompile: ~generateETag /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/utils.js:275:32
+      1  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      1    1.1%      LazyCompile: ~clearIncoming _http_server.js:660:23
+      1  100.0%        LazyCompile: ~resOnFinish _http_server.js:676:21
+      1  100.0%          Eval: ~<anonymous> zlib.js:1:1
+      1  100.0%            LazyCompile: ~onFinish _http_outgoing.js:721:18
+      1    1.1%      LazyCompile: ~_addListener events.js:343:22
+      1  100.0%        LazyCompile: ~addListener events.js:405:58
+      1  100.0%          Eval: ~<anonymous> internal/bootstrap/switches/is_main_thread.js:1:1
+      1    1.1%      LazyCompile: ~_addHeaderLine _http_incoming.js:256:24
+      1  100.0%        LazyCompile: ~_addHeaderLines _http_incoming.js:121:25
+      1  100.0%          LazyCompile: ~parserOnHeadersComplete _http_common.js:74:33
+      1    1.1%      LazyCompile: ~Writable _stream_writable.js:221:18
+      1  100.0%        LazyCompile: ~Duplex _stream_duplex.js:51:16
+      1  100.0%          LazyCompile: ~Socket net.js:264:16
+      1  100.0%            LazyCompile: ~WriteStream tty.js:84:21
+      1    1.1%      LazyCompile: ~Module.load internal/modules/cjs/loader.js:974:33
+      1  100.0%        LazyCompile: ~Module._load internal/modules/cjs/loader.js:823:24
+      1  100.0%          LazyCompile: ~Module.require internal/modules/cjs/loader.js:1018:36
+      1  100.0%            LazyCompile: ~require internal/modules/cjs/helpers.js:71:31
+      1    1.1%      LazyCompile: ~Module._extensions..json internal/modules/cjs/loader.js:1163:39
+      1  100.0%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:974:33
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:823:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:1018:36
+      1    1.1%      LazyCompile: ~IncomingMessage _http_incoming.js:41:25
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete _http_common.js:74:33
+      1    1.1%      LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      1  100.0%        LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%          LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:114:16
+      1  100.0%            LazyCompile: ~dispatch /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:98:45
+      1    1.1%      Eval: ~<anonymous> zlib.js:1:1
+      1  100.0%        LazyCompile: ~once events.js:434:44
+      1  100.0%          LazyCompile: ~<anonymous> internal/console/constructor.js:218:10
+      1  100.0%            LazyCompile: ~afterWrite _stream_writable.js:480:20
+      1    1.1%      Eval: ~<anonymous> internal/console/constructor.js:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:297:29
+      1  100.0%            Eval: ~<anonymous> internal/console/global.js:1:1
+      1    1.1%      Eval: ~<anonymous> internal/async_hooks.js:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:297:29
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    1.1%      Eval: ~<anonymous> crypto.js:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      1  100.0%          LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:213:25
+      1  100.0%            LazyCompile: ~loadNativeModule internal/modules/cjs/helpers.js:20:26
+      1    1.1%      Eval: ~<anonymous> _http_outgoing.js:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:297:29
+      1  100.0%            Eval: ~<anonymous> _http_client.js:1:1
+     12    3.8%    Eval: ~<anonymous> zlib.js:1:1
+      3   25.0%      LazyCompile: ~onFinish _http_outgoing.js:721:18
+      3  100.0%        LazyCompile: ~onCorkedFinish _stream_writable.js:667:24
+      3  100.0%          LazyCompile: ~afterWrite _stream_writable.js:480:20
+      3  100.0%            LazyCompile: ~afterWriteTick _stream_writable.js:475:24
+      3   25.0%      LazyCompile: ~endReadableNT _stream_readable.js:1214:23
+      3  100.0%        LazyCompile: *processTicksAndRejections internal/process/task_queues.js:69:35
+      2   16.7%      LazyCompile: ~clearIncoming _http_server.js:660:23
+      2  100.0%        LazyCompile: ~resOnFinish _http_server.js:676:21
+      2  100.0%          Eval: ~<anonymous> zlib.js:1:1
+      2  100.0%            LazyCompile: ~onFinish _http_outgoing.js:721:18
+      1    8.3%      LazyCompile: ~socketListenerWrap _http_server.js:839:37
+      1  100.0%        LazyCompile: ~assignSocket _http_server.js:212:62
+      1  100.0%          LazyCompile: ~parserOnIncoming _http_server.js:721:26
+      1  100.0%            LazyCompile: ~parserOnHeadersComplete _http_common.js:74:33
+      1    8.3%      LazyCompile: ~once events.js:434:44
+      1  100.0%        LazyCompile: ~<anonymous> internal/console/constructor.js:218:10
+      1  100.0%          LazyCompile: ~afterWrite _stream_writable.js:480:20
+      1  100.0%            LazyCompile: ~afterWriteTick _stream_writable.js:475:24
+      1    8.3%      LazyCompile: ~emitReadable_ _stream_readable.js:552:23
+      1  100.0%        LazyCompile: *processTicksAndRejections internal/process/task_queues.js:69:35
+      1    8.3%      LazyCompile: ~_finish _http_outgoing.js:793:53
+      1  100.0%        LazyCompile: ~_finish _http_server.js:178:52
+      1  100.0%          LazyCompile: ~end _http_outgoing.js:726:45
+      1  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      6    1.9%    LazyCompile: ~readableAddChunk _stream_readable.js:220:26
+      6  100.0%      LazyCompile: ~Readable.push _stream_readable.js:211:35
+      6  100.0%        LazyCompile: ~parserOnMessageComplete _http_common.js:138:33
+      6    1.9%    LazyCompile: ~IncomingMessage _http_incoming.js:41:25
+      6  100.0%      LazyCompile: ~parserOnHeadersComplete _http_common.js:74:33
+      5    1.6%    LazyCompile: ~resOnFinish _http_server.js:676:21
+      5  100.0%      Eval: ~<anonymous> zlib.js:1:1
+      5  100.0%        LazyCompile: ~onFinish _http_outgoing.js:721:18
+      5  100.0%          LazyCompile: ~onCorkedFinish _stream_writable.js:667:24
+      5  100.0%            LazyCompile: ~afterWrite _stream_writable.js:480:20
+      4    1.3%    T __ZN2v88internal18Builtin_ConsoleLogEiPmPNS0_7IsolateE
+      4  100.0%      t __ZN4node9inspector12_GLOBAL__N_120InspectorConsoleCallERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      4  100.0%        LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      4  100.0%          LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+      4  100.0%            LazyCompile: ~next /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/route.js:114:16
+      4    1.3%    LazyCompile: ~writevGeneric internal/stream_base_commons.js:116:23
+      4  100.0%      LazyCompile: ~Socket._writeGeneric net.js:760:42
+      4  100.0%        LazyCompile: ~Socket._writev net.js:792:36
+      4  100.0%          LazyCompile: ~doWrite _stream_writable.js:393:17
+      4  100.0%            LazyCompile: ~clearBuffer _stream_writable.js:497:21
+      4    1.3%    LazyCompile: ~writeHead _http_server.js:243:19
+      4  100.0%      LazyCompile: ~_implicitHeader _http_server.js:238:68
+      4  100.0%        LazyCompile: ~write_ _http_outgoing.js:627:16
+      4  100.0%          LazyCompile: ~end _http_outgoing.js:726:45
+      4  100.0%            LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      4    1.3%    LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:69:35
+      4    1.3%    LazyCompile: ~onconnection net.js:1527:22
+      4    1.3%    LazyCompile: ~header /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:754:29
+      4  100.0%      LazyCompile: ~contentType /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:594:32
+      4  100.0%        LazyCompile: ~send /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/response.js:107:25
+      4  100.0%          LazyCompile: ~<anonymous> /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/1singlethreaded.js:19:23
+      4  100.0%            LazyCompile: ~handle /Users/madhukar_jha/Documents/learnings/Code/nodejs/NodeJS/node_modules/express/lib/router/layer.js:86:49
+

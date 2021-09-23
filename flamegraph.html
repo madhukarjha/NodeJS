@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>flamebearer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+    html, body { height: 100%; }
+    body { font: 16px "Helvetica Neue", sans-serif; margin: 0; }
+    body.hover { background: #cfc; }
+    h1 { font-size: 30px; margin: 30px 30px 15px; }
+    h1 a { color: black; text-decoration: none; }
+    h1 a:hover { text-decoration: underline; }
+    #fire-icon { fill: #f53; width: 26px; height: 26px; vertical-align: -1px; }
+    #intro { margin: 0 30px; }
+    code { font-size: 13px; color: #444; }
+    code span { color: #aaa; }
+    #canvas { width: 100%; }
+    #controls { display: none; }
+    #search { margin-right: 10px; }
+    #highlight { position: absolute; pointer-events: none; background: #ffffff40; }
+    .loaded #intro { display: none; }
+    .loaded #header { display: flex; align-items: center; flex-flow: row wrap; padding: 7px 10px; }
+    .loaded h1 { font-size: 22px; margin: 0 auto 0 0; flex-shrink: 0; }
+    .loaded #fire-icon { width: 20px; height: 20px; }
+    .loaded #controls { display: block; flex-shrink: 0; }
+    #tooltip { position: absolute; pointer-events: none; background: #ffffff; white-space: nowrap; box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.3); border-radius: 2px; padding: 3px 5px; font: 12px Tahoma, sans-serif; display: none; }
+    #tooltip .path { color: #888; font-size: 11px; }
+    #tooltip .time { color: #4a4; }
+</style>
+</head>
+<body>
+
+<div id="header">
+    <h1><svg id="fire-icon" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve"><path d="M7.5,0.5L5,4.5l-1.5-2 C2.9452,3.4753,0.8036,5.7924,0.8036,8.3036C0.8036,12.002,3.8017,15,7.5,15s6.6964-2.998,6.6964-6.6964 c0-2.5112-2.1416-4.8283-2.6964-5.8036l-1.5,2L7.5,0.5z M7.5,7c0,0,2.5,2.5618,2.5,4.5c0,0.8371-0.8259,2-2.5,2S5,12.3371,5,11.5 C5,9.6283,7.5,7,7.5,7z"/></svg> <a href="https://github.com/mapbox/flamebearer">flamebearer</a></h1>
+    <div id="controls">
+        <input id="search" placeholder="Search..." />
+        <button id="reset">Reset view</button>
+    </div>
+</div>
+<div id="highlight"></div>
+<div id="tooltip"></div>
+<div id="intro"><!--  --></div>
+<canvas id="canvas" height="0"></canvas>
+
+<!--  -->
+<script>'use strict';
+
+const introEl = document.getElementById('intro');
+const searchEl = document.getElementById('search');
+const highlightEl = document.getElementById('highlight');
+const tooltipEl = document.getElementById('tooltip');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let names, levels, numTicks;
+
+names = ["(unknown)","~(anonymous) internal/bootstrap/node.js:1:1","~createGlobalConsole internal/bootstrap/node.js:346:29","~nativeModuleRequire internal/bootstrap/loaders.js:297:29","~compileForInternalLoader internal/bootstrap/loaders.js:264:27","~(anonymous) internal/console/global.js:1:1","~(anonymous) internal/console/constructor.js:1:1","(bytecode) ~Abort.ExtraWide","(unknown)","~(anonymous) internal/process/execution.js:1:1","~(anonymous) internal/main/run_main_module.js:1:1","~executeUserEntryPoint internal/modules/run_main.js:64:31","~resolveMainPath internal/modules/run_main.js:8:25","~Module._findPath internal/modules/cjs/loader.js:607:28","~resolve path.js:973:10","~normalizeString path.js:52:25","~Module._load internal/modules/cjs/loader.js:823:24","~Module.load internal/modules/cjs/loader.js:974:33","~Module._extensions..js internal/modules/cjs/loader.js:1147:37","~Module._compile internal/modules/cjs/loader.js:1092:37","~(anonymous) ./1singlethreaded.js:1:1","~require internal/modules/cjs/helpers.js:71:31","~Module.require internal/modules/cjs/loader.js:1018:36","~Module._resolveFilename internal/modules/cjs/loader.js:901:35","~resolveExports internal/modules/cjs/loader.js:498:24","~applyExports internal/modules/cjs/loader.js:441:22","~readPackageExports internal/modules/cjs/loader.js:302:28","~readPackage internal/modules/cjs/loader.js:245:21","~(anonymous) ./node_modules/express/index.js:1:1","~(anonymous) ./node_modules/express/lib/express.js:1:1","~(anonymous) ./node_modules/body-parser/index.js:1:1","~(anonymous) ./node_modules/depd/index.js:1:1","~tryPackage internal/modules/cjs/loader.js:307:20","~readPackageMain internal/modules/cjs/loader.js:297:25","~(anonymous) ./node_modules/express/lib/application.js:1:1","~(anonymous) ./node_modules/finalhandler/index.js:1:1","~tryExtensions internal/modules/cjs/loader.js:369:23","~tryFile internal/modules/cjs/loader.js:353:17","~toRealPath internal/modules/cjs/loader.js:362:20","~realpathSync fs.js:1534:22","~handleErrorFromBinding internal/fs/utils.js:225:32","~(anonymous) ./node_modules/statuses/index.js:1:1","~populateStatusesMap ./node_modules/statuses/index.js:60:30","normalizeString path.js:52:25","~readFileSync fs.js:357:22","~closeSync fs.js:415:19","~hidden internal/errors.js:282:25","~(anonymous) ./node_modules/express/lib/view.js:1:1","~loadNativeModule internal/modules/cjs/helpers.js:20:26","~compileForPublicLoader internal/bootstrap/loaders.js:213:25","~syncExports internal/bootstrap/loaders.js:252:14","~getOwn internal/bootstrap/loaders.js:149:16","~(anonymous) ./node_modules/express/lib/utils.js:1:1","~toString internal/url.js:445:29","~format internal/url.js:396:27","~get internal/url.js:575:8","~(anonymous) ./node_modules/send/index.js:1:1","~(anonymous) ./node_modules/http-errors/index.js:1:1","~tryReadSync fs.js:345:21","~readSync fs.js:532:18","~(anonymous) internal/fs/utils.js:535:38","~(anonymous) internal/fs/utils.js:244:35","~(anonymous) ./node_modules/etag/index.js:1:1","~(anonymous) crypto.js:1:1","~(anonymous) internal/crypto/cipher.js:1:1","~(anonymous) ./node_modules/mime/mime.js:1:1","~(anonymous) ./node_modules/express/lib/request.js:1:1","~(anonymous) ./node_modules/accepts/index.js:1:1","~(anonymous) ./node_modules/mime-types/index.js:1:1","~(anonymous) ./node_modules/mime-db/index.js:1:1","~Module._extensions..json internal/modules/cjs/loader.js:1163:39","~populateMaps ./node_modules/mime-types/index.js:154:23","~forEachMimeType ./node_modules/mime-types/index.js:158:52","~(anonymous) ./node_modules/express/lib/response.js:1:1","~get ./node_modules/body-parser/index.js:122:23","~loadParser ./node_modules/body-parser/index.js:132:21","~(anonymous) ./node_modules/body-parser/lib/types/json.js:1:1","~(anonymous) ./node_modules/body-parser/lib/read.js:1:1","~(anonymous) ./node_modules/raw-body/index.js:1:1","~(anonymous) ./node_modules/iconv-lite/lib/index.js:1:1","~(anonymous) ./node_modules/iconv-lite/lib/bom-handling.js:1:1","~(anonymous) ./node_modules/serve-static/index.js:1:1","~(anonymous) ./node_modules/body-parser/lib/types/urlencoded.js:1:1","~createDebug ./node_modules/debug/src/debug.js:63:21","~selectColor ./node_modules/debug/src/debug.js:44:21","~onconnection net.js:1527:22","~(anonymous) net.js:1:1","~connectionListener _http_server.js:395:28","~(anonymous) _stream_writable.js:1:1","~connectionListenerInternal _http_server.js:401:36","~Readable.on _stream_readable.js:871:33","~nowDate internal/http.js:13:17","~cache internal/http.js:23:15","(lib) /usr/lib/system/libsystem_kernel.dylib","~processTimers internal/timers.js:477:25","~peek internal/priority_queue.js:45:7","~parserOnHeadersComplete _http_common.js:74:33","~IncomingMessage _http_incoming.js:41:25","~Readable _stream_readable.js:169:18","~ReadableState _stream_readable.js:87:23","~parserOnIncoming _http_server.js:721:26","~ServerResponse _http_server.js:154:24","~OutgoingMessage _http_outgoing.js:81:25","~app ./node_modules/express/lib/express.js:38:21","~handle ./node_modules/express/lib/application.js:158:29","~handle ./node_modules/express/lib/router/index.js:136:31","~debug ./node_modules/debug/src/debug.js:65:17","~next ./node_modules/express/lib/router/index.js:176:16","~process_params ./node_modules/express/lib/router/index.js:327:47","~(anonymous) ./node_modules/express/lib/router/index.js:275:64","~trim_prefix ./node_modules/express/lib/router/index.js:288:23","~handle ./node_modules/express/lib/router/layer.js:86:49","~query ./node_modules/express/lib/middleware/query.js:39:24","~expressInit ./node_modules/express/lib/middleware/init.js:29:30","~(anonymous) ./node_modules/express/lib/router/index.js:629:19","~(anonymous) ./node_modules/finalhandler/index.js:86:19","~send ./node_modules/finalhandler/index.js:272:15","~Readable.resume _stream_readable.js:958:37","~resume _stream_readable.js:972:16","~resume_ _stream_readable.js:979:17","~Readable.read _stream_readable.js:377:35","~endReadable _stream_readable.js:1204:21","~endReadableNT _stream_readable.js:1214:23","~onevent ./node_modules/ee-first/index.js:81:26","~callback ./node_modules/ee-first/index.js:53:20","~onFinish ./node_modules/on-finished/index.js:95:20","~listener ./node_modules/on-finished/index.js:161:20","~write ./node_modules/finalhandler/index.js:273:18","~createHtmlDocument ./node_modules/finalhandler/index.js:43:29","~escapeHtml ./node_modules/escape-html/index.js:33:20","(C++) __kernelrpc_mach_port_set_attributes","~param ./node_modules/express/lib/router/index.js:348:17","~dispatch ./node_modules/express/lib/router/route.js:98:45","~next ./node_modules/express/lib/router/route.js:114:16","~(anonymous) ./1singlethreaded.js:8:23","~send ./node_modules/express/lib/response.js:107:25","~setCharset ./node_modules/express/lib/utils.js:250:41","~parse ./node_modules/content-type/index.js:106:16","(lib) /usr/lib/system/libsystem_pthread.dylib","~listOnTimeout internal/timers.js:497:25"];
+levels = [[0,1,0,0,36,8],[0,1,1,0,1,1,0,2,8,0,23,10,0,2,85,0,2,94,0,6,96],[0,1,2,0,1,3,0,1,119,0,1,122,0,23,11,0,2,86,0,1,95,0,1,139,0,1,97,0,5,100],[0,1,3,0,1,4,0,1,120,0,1,86,0,1,12,0,22,16,0,2,87,0,1,7,0,1,7,0,1,98,0,4,86,0,1,101],[0,1,4,0,1,9,0,1,121,0,1,123,0,1,13,0,22,17,0,2,88,2,1,99,0,4,103,0,1,102],[0,1,5,0,1,7,0,1,8,0,1,124,0,1,14,0,22,18,0,2,89,2,1,7,0,4,104,0,1,7],[0,1,3,0,1,7,0,1,7,0,1,125,0,1,15,0,22,19,0,1,90,0,1,91,3,4,105,0,1,7],[0,1,4,1,1,7,0,1,126,0,1,7,0,22,20,0,1,8,0,1,92,3,1,106,0,3,107],[0,1,6,2,1,127,1,22,21,0,1,8,0,1,7,3,1,7,0,3,108],[0,1,7,2,1,128,1,22,22,0,1,7,0,1,93,4,3,109],[3,1,129,1,22,16,6,3,110],[3,1,7,1,21,17,0,1,23,6,3,111],[3,1,7,1,21,18,0,1,13,6,3,112],[3,1,130,1,21,19,0,1,24,6,3,107],[5,21,28,0,1,25,6,3,108],[5,21,21,0,1,26,6,3,109],[5,21,22,0,1,27,6,3,110],[5,21,16,0,1,7,6,3,111],[5,21,17,0,1,7,6,3,113],[5,21,18,7,3,107],[5,21,19,7,1,108,0,2,114],[5,21,29,7,1,131,0,1,7,0,1,115],[5,19,21,0,2,74,7,1,131,1,1,116],[5,19,22,0,2,75,7,1,109,1,1,117],[5,19,16,0,2,21,7,1,111,1,1,118],[5,19,17,0,2,22,7,1,132,1,1,8],[5,19,18,0,2,16,7,1,133,1,1,8],[5,19,19,0,2,17,7,1,111,1,1,7],[5,1,30,0,13,34,0,3,66,0,1,73,0,1,81,0,2,18,7,1,134],[5,1,21,0,13,21,0,3,21,0,1,21,0,1,21,0,2,19,7,1,135],[5,1,22,0,13,22,0,3,22,0,1,22,0,1,22,0,1,76,0,1,82,7,1,136],[5,1,16,0,13,16,0,3,16,0,1,16,0,1,16,0,1,21,0,1,83,7,1,137],[5,1,17,0,11,17,0,2,23,0,3,17,0,1,7,0,1,48,0,1,22,0,1,84,7,1,7],[5,1,18,0,11,18,0,2,13,0,3,18,1,1,49,0,1,16,0,1,7,7,1,7],[5,1,19,0,10,19,0,1,44,0,1,32,0,1,36,0,3,19,1,1,7,0,1,17,0,1,7,7,1,138],[5,1,31,0,2,35,0,1,47,0,7,52,0,1,45,0,1,33,0,1,37,0,3,67,2,1,18],[5,1,21,0,2,21,0,1,21,0,7,21,0,1,46,0,1,7,0,1,38,0,3,21,2,1,19],[5,1,22,0,2,22,0,1,22,0,7,22,0,1,7,1,1,39,0,3,22,2,1,77],[5,1,16,0,2,16,0,1,16,0,7,16,2,1,14,0,3,16,2,1,21],[5,1,23,0,1,17,0,1,23,0,1,48,0,7,17,2,1,43,0,3,17,2,1,22],[5,1,13,0,1,18,0,1,13,0,1,49,0,6,18,0,1,53,3,3,18,2,1,16],[5,1,32,0,1,19,0,1,32,0,1,50,0,6,19,0,1,54,3,3,19,2,1,17],[5,1,33,0,1,41,0,1,36,0,1,51,0,6,56,0,1,55,3,3,68,2,1,18],[5,1,27,0,1,42,0,1,37,0,1,7,0,6,21,0,1,7,3,2,21,0,1,71,2,1,19],[5,1,14,0,1,7,0,1,38,1,6,22,4,2,22,0,1,7,2,1,78],[5,1,15,0,1,7,0,1,39,1,6,16,4,2,16,0,1,72,2,1,21],[5,1,7,0,1,7,0,1,40,1,4,17,0,2,23,4,2,17,0,1,7,2,1,22],[7,1,7,1,4,18,0,2,13,4,2,18,0,1,7,2,1,16],[9,4,19,0,2,32,4,2,19,3,1,17],[9,1,57,0,2,62,0,1,65,0,2,36,4,2,69,3,1,18],[9,1,21,0,2,21,0,1,21,0,2,37,4,2,21,3,1,19],[9,1,22,0,2,22,0,1,22,0,2,38,4,2,22,3,1,79],[9,1,16,0,2,16,0,1,16,0,2,39,4,2,16,3,1,21],[9,1,17,0,2,48,0,1,7,0,1,7,0,1,46,4,2,17,3,1,22],[9,1,18,0,2,49,2,1,60,4,2,70,3,1,16],[9,1,44,0,2,4,2,1,46,4,2,7,3,1,17],[9,1,58,0,2,63,2,1,61,4,2,7,3,1,18],[9,1,59,0,1,3,0,1,7,2,1,7,9,1,19],[9,1,46,0,1,4,13,1,80],[9,1,7,0,1,64,13,1,7],[10,1,3],[10,1,4],[10,1,7]];
+numTicks = 37;
+
+let rangeMin = 0;
+let rangeMax = 1;
+let topLevel = 0;
+let query = '';
+let graphWidth, pxPerTick;
+
+const pxPerLevel = 18;
+const collapseThreshold = 5;
+const hideThreshold = 0.5;
+const labelThreshold = 20;
+
+highlightEl.style.height = pxPerLevel + 'px';
+
+if (levels) {
+    init();
+}
+
+function init() {
+    document.body.classList.add('loaded');
+
+    // delta-decode bar positions
+    for (const level of levels) {
+        let prev = 0;
+        for (let i = 0; i < level.length; i += 3) {
+            level[i] += prev;
+            prev = level[i] + level[i + 1];
+        }
+    }
+
+    updateFromHash();
+    render();
+}
+
+window.onhashchange = () => {
+    updateFromHash();
+    render();
+};
+canvas.onclick = (e) => {
+    const {i, j} = xyToBar(e.offsetX, e.offsetY);
+    if (j === -1) return;
+    window.location.hash = [i, j].join(',');
+    removeHover();
+};
+document.getElementById('reset').onclick = () => {
+    searchEl.value = query = '';
+    window.location.hash = '';
+    render();
+};
+window.onresize = render;
+
+searchEl.oninput = (e) => {
+    query = e.target.value;
+    render();
+};
+
+function updateFromHash() {
+    const [i, j] = window.location.hash.substr(1).split(',').map(Number);
+
+    if (!isNaN(i) && !isNaN(j)) {
+        topLevel = i;
+        rangeMin = levels[i][j] / numTicks;
+        rangeMax = (levels[i][j] + levels[i][j + 1]) / numTicks;
+    } else {
+        topLevel = 0;
+        rangeMin = 0;
+        rangeMax = 1;
+    }
+}
+
+function tickToX(i) {
+    return (i - numTicks * rangeMin) * pxPerTick;
+}
+
+function render() {
+    if (!levels) return;
+
+    graphWidth = canvas.width = canvas.clientWidth;
+    canvas.height = pxPerLevel * (levels.length - topLevel);
+    canvas.style.height = canvas.height + 'px';
+
+    if (devicePixelRatio > 1) {
+        canvas.width *= 2;
+        canvas.height *= 2;
+        ctx.scale(2, 2);
+    }
+
+    pxPerTick = graphWidth / numTicks / (rangeMax - rangeMin);
+
+    ctx.textBaseline = 'middle';
+    ctx.font = '10px Tahoma, sans-serif';
+    ctx.strokeStyle = 'white';
+
+    for (let i = 0; i < levels.length - topLevel; i++) {
+        const level = levels[topLevel + i];
+
+        for (let j = 0; j < level.length; j += 3) {
+            const barIndex = level[j];
+            const x = tickToX(barIndex);
+            const y = i * pxPerLevel;
+            let numBarTicks = level[j + 1];
+
+            const inQuery = query && (names[level[j + 2]].indexOf(query) >= 0) || false;
+
+            // merge very small blocks into big "collapsed" ones for performance
+            const collapsed = numBarTicks * pxPerTick <= collapseThreshold;
+            if (collapsed) {
+                while (
+                    j < level.length - 3 &&
+                    barIndex + numBarTicks === level[j + 3] &&
+                    level[j + 4] * pxPerTick <= collapseThreshold &&
+                    (inQuery === (query && (names[level[j + 5]].indexOf(query) >= 0) || false))
+                ) {
+                    j += 3;
+                    numBarTicks += level[j + 1];
+                }
+            }
+
+            const sw = numBarTicks * pxPerTick - (collapsed ? 0 : 0.5);
+            const sh = pxPerLevel - 0.5;
+
+            if (x < -1 || x + sw > graphWidth + 1 || sw < hideThreshold) continue;
+
+            ctx.beginPath();
+            ctx.rect(x, y, sw, sh);
+
+            const ratio = numBarTicks / numTicks;
+
+            if (!collapsed) {
+                ctx.stroke();
+                const intensity = Math.min(1, ratio * Math.pow(1.16, i) / (rangeMax - rangeMin));
+                const h = 50 - 50 * intensity;
+                const l = 65 + 7 * intensity;
+                ctx.fillStyle = inQuery ? 'lightgreen' : `hsl(${h}, 100%, ${l}%)`;
+            } else {
+                ctx.fillStyle = inQuery ? 'lightgreen' : '#eee';
+            }
+            ctx.fill();
+
+            if (!collapsed && sw >= labelThreshold) {
+
+                const percent = Math.round(10000 * ratio) / 100;
+                const name = `${names[level[j + 2]]} (${percent}%, ${numBarTicks} samples)`;
+
+                ctx.save();
+                ctx.clip();
+                ctx.fillStyle = 'black';
+                ctx.fillText(name, Math.max(x, 0) + 1, y + sh / 2);
+                ctx.restore();
+            }
+        }
+    }
+}
+
+// pixel coordinates to bar coordinates in the levels array
+function xyToBar(x, y) {
+    const i = Math.floor(y / pxPerLevel) + topLevel;
+    const j = binarySearchLevel(x, levels[i]);
+    return {i, j};
+}
+
+// binary search of a block in a stack level
+function binarySearchLevel(x, level) {
+    let i = 0;
+    let j = level.length - 3;
+    while (i <= j) {
+        const m = 3 * ((i / 3 + j / 3) >> 1);
+        const x0 = tickToX(level[m]);
+        const x1 = tickToX(level[m] + level[m + 1]);
+        if (x0 <= x && x1 >= x) {
+            return x1 - x0 > collapseThreshold ? m : -1;
+        }
+        if (x0 > x) {
+            j = m - 3;
+        } else {
+            i = m + 3;
+        }
+    }
+    return -1;
+}
+
+if (window.orientation === undefined) {
+    canvas.onmousemove = addHover;
+    canvas.onmouseout = window.onscroll = removeHover;
+}
+
+function removeHover() {
+    canvas.style.cursor = '';
+    highlightEl.style.display = 'none';
+    tooltipEl.style.display = 'none';
+}
+
+function addHover(e) {
+    const {i, j} = xyToBar(e.offsetX, e.offsetY);
+
+    if (j === -1 || e.offsetX < 0 || e.offsetX > graphWidth) {
+        removeHover();
+        return;
+    }
+
+    canvas.style.cursor = 'pointer';
+
+    const level = levels[i];
+    const x = tickToX(level[j]);
+    const y = (i - topLevel) * pxPerLevel;
+    const sw = tickToX(level[j] + level[j + 1]) - x;
+
+    highlightEl.style.display = 'block';
+    highlightEl.style.left = x + 'px';
+    highlightEl.style.top = (canvas.offsetTop + y) + 'px';
+    highlightEl.style.width = sw + 'px';
+
+    const numBarTicks = level[j + 1];
+    const percent = Math.round(10000 * numBarTicks / numTicks) / 100;
+    const time = `<span class="time">(${percent}%, ${numBarTicks} samples)</span>`;
+    let content = names[level[j + 2]];
+    if (content[0] !== '(') content = content.replace(' ', ` ${time}<br><span class="path">`) + '</span>';
+    else content += ` ${time}`;
+
+    tooltipEl.innerHTML = content;
+    tooltipEl.style.display = 'block';
+    tooltipEl.style.left = (Math.min(e.offsetX + 15 + tooltipEl.clientWidth, graphWidth) - tooltipEl.clientWidth) + 'px';
+    tooltipEl.style.top = (canvas.offsetTop + e.offsetY + 12) + 'px';
+}
+
+// (function frame() { if (levels) render(); requestAnimationFrame(frame); })();
+
+
+</script>
+</body>
+</html>
